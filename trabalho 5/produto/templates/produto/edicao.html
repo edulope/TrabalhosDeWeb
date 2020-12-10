@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}
+   Editar
+{% endblock %}
+
+{% block corpo %}
+    {% if falha %}
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Erro ao Cadastrar nova categoria!</h4>
+            <hr>
+            {% for error in form.nome.errors %}
+                <small>{{ error }}</small>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% comment %}
+        {% if sucesso %}
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Sucesso ao Cadastrar nova categoria!</h4>
+            </div>
+        {% endif %}
+    {% endcomment %}
+    <div class="container-fluid" id="cardapio-container">
+        <div class="row col-12">
+            <h2 class="col-2 d-none d-md-block" id="cardapio-title">Editar</h2>
+            <div class="col-10" id="pesquisa-form">
+                    <form action="" method ='GET' class="row">
+                    <div class='col-8'>
+                        {{ formPesquisa.pesquisa }}
+                    </div>
+                    <div class="col-2">
+                        <button type='submit' class='btn btn-primary'>
+                            Pesquisar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="row col-12">
+            <div class="row col-12">
+                <div class="col-1 mb-3">
+                </div>
+                <div class="col-3 mt-3 mb-3">
+                    <h4>Produtos</h4>
+                </div>
+                <div class="col-6 d-none d-md-block mb-3">
+                </div>
+                <div class="col-4 d-block d-md-none mb-3">
+                </div>
+                <div class="col-2  mt-3 mb-3 ">
+                    <a href="{% url 'produto:cadastrar_produtos' %}"><h5>Adicionar</h5></a>
+                </div>
+            </div>
+            <div class="sabor-container col-12 mb-5">
+                <div class="row">
+                    {% for produto in produtos %}
+                                <div class="row col-lg-6 mb-5">
+                                    <div class="media col-12">
+                                        {% if produto.imagem %}
+                                            <img src="{{produto.imagem.url}}" alt={{ produto.nome }}>
+                                         {% else %}
+                                           <div class="text-md-center mb-md-0 mb-2">
+                                              Imagem não disponível
+                                           </div>
+                                        {% endif %}
+                                        <div class="media-body col-12">
+                                            <h5 class="col-12"><a href="{% url 'produto:edita_produto' produto.id %}">{{ produto.nome }}</a> - R${{ produto.preco }}
+                                                {% if produto.disponivel %}
+                                                    <span class="badge badge-primary">Disponível</span>
+                                                {% else %}
+                                                    <span class="badge badge-danger">Indisponível</span>
+                                                {% endif %}
+                                            </h5>
+                                            <p class="col-12">{{ produto.descricao }}</p>
+                                            <b class="col-12">{{ produto.categoria }}</b>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-2"></div>
+                        <div class="col-8" style='font-size: 14px; margin-bottom: 28px'>
+                            {% if produtos.has_other_pages %}
+                                <ul class='pagination'>
+                                    {% if produtos.has_previous %}
+                                        <li class='page-item page-item-change'><a class='page-link ' href='?pagina={{ produtos.previous_page_number }}&pesquisa={{nome}}'>Anterior</a></li>
+                                    {% else %}
+                                        <li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Anterior</a></li>
+                                    {% endif %}
+
+                                    {% for i in produtos.paginator.page_range %}
+                                        {% if produtos.number == i %}
+                                            <li class='page-item active'><a class='page-link' href='#'>{{ i }} </a></li>
+                                        {% else %}
+                                            <li class='page-item page-item-change'><a class='page-link' href='?pagina={{ i }}'>{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if produtos.has_next %}
+                                        <li class='page-item page-item-change'><a class='page-link' href='?pagina={{ produtos.next_page_number }}&pesquisa={{nome}}'>Próxima</a></li>
+                                    {% else %}
+                                        <li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Próxima</a></li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+        </div>
+
+        <div class="row col-12">
+            <div class="row col-12">
+                <div class="col-1 mb-3">
+                </div>
+                <div class="col-3 mt-3 mb-3">
+                     <h4>Categorias</h4>
+                </div>
+                <div class="col-6 d-none d-md-block mb-3">
+                </div>
+                <div class="col-4 d-block d-md-none mb-3">
+                </div>
+                <div class="col-2  mt-3 mb-3 ">
+                    <a href="#" data-toggle="modal" data-target="#modalAdicionaCategoria"><h5>Adicionar</h5></a>
+                </div>
+
+                <div class="modal fade" style="color: black;" id="modalAdicionaCategoria">
+               <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <span class="modal-title">Adicionar Categoria</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <div class="modal-body" style="padding-top: 40px;">
+                        <form action="" method="POST" class="pb-4" novalidate>
+                            <div class="mb-3 col-lg-12">
+                                <div class="row">
+                                    <h5 class="pt-4 col-3">Nome:</h5>
+                                    <div class="col-9 mt-3">
+                                        {{ form.nome }}
+                                        {% if form.nome.errors %}
+                                            <div class="alert alert-danger mb-0" role="alert" style="padding-top: 2px; padding-bottom: 2px">
+                                                {% for error in form.nome.errors %}
+                                                    <small>{{ error }}</small>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                               {% csrf_token%}
+                              <button type="submit" class="btn btn-primary">Enviar</button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            </div>
+            <div class="sabor-container col-12 mb-5">
+                {% for categoria in categorias %}
+                <div class="row col-12 mb-5">
+                    <div class="col-1">
+                    </div>
+                    <div class="col-4">
+                        <h4>{{ categoria.nome }}</h4>
+                    </div>
+                    <div class="col-5">
+                    </div>
+                    <div class="col-1">
+                        <form action="{% url 'produto:remove_categoria' categoria.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">
+                                <span>Remover</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% load humanize %}
+
+<div>
+    <div id="id">{{ produto.pk }}</div>
+    <div id="nome">{{ produto.nome  }}</div>
+    <div id="quantidade">{{ produto.quantidade | intcomma }}</div>
+    <div id="categoria">{{ produto.categoria }}</div>
+    <div id="preco">{{ produto.preco | floatformat:2 | intcomma }}</div>
+    <div id="form-quantidade">{{ form.quantidade }}</div>
+    <div id="form-id">{{ form.produto_id }}</div>
+    <div id="form-token">{% csrf_token %}</div>
+    <div id="total">{{ total | floatformat:2 | intcomma }}</div>
+</div>
+
+
+
