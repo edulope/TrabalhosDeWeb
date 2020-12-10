@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}
+   Bem Vindo
+{% endblock %}
+
+{% load humanize %}
+
+{% block header %}
+{% endblock %}
+
+{% block corpo %}
+   <div class="row col-12 mt-4">
+       <div class="col-2"></div>
+       <div class="col-8">
+            <h1>Cadastro de produtos</h1>
+            <hr>
+           <div class="container" id="cadastro">
+               <div class="d-none" id="#form-url">{% url 'cria' %}</div>
+                <form action="{% url 'cria' %}", id="form-cadastro", method="post" enctype="multipart/form-data" class="pb-4">
+                   <div class="row pt-4">
+                       <div class="col-4">
+                            <h5>Categoria:</h5>
+                       </div>
+                       <div class="col-8">
+                           <div >
+                               <select class="form-control" id="categoria-form">
+                                   <option selected value="">--- Selecione uma unidade ---</option>
+                                   {% for id,categoria in categoriasZip %}
+                                        <option value="{{ id }}">{{ categoria.nome }}</option>
+                                   {% endfor %}
+                               </select>
+                           </div>
+                       </div>
+                   </div>
+                    <div class="row pt-4">
+                       <div class="col-4">
+                            <h5>Nome:</h5>
+                       </div>
+                       <div class="col-8">
+                           <div>
+                               <input type="text" class="form-control" placeholder="" id="nome-form">
+                               <div class="invalid-feedback">
+                                   O nome não pode ser vazio.
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                    <div class="row pt-4">
+                       <div class="col-4">
+                            <h5>Quantidade:</h5>
+                       </div>
+                       <div class="col-8">
+                           <div>
+                               <input type="text" class="form-control" placeholder="" id="quantidade-form">
+                               <div class="invalid-feedback">
+                                   Por favor insira uma quantidade válida.
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                    <div class="row pt-4 mb-4">
+                       <div class="col-4">
+                            <h5>Preco:</h5>
+                       </div>
+                       <div class="col-8">
+                           <div>
+                               <input type="number" class="form-control" placeholder="" id="preco-form">
+                               <div class="invalid-feedback">
+                                   Por favor insira um valor válido.
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                    <div class="mt-4">
+                        {%csrf_token%}
+                        <!--<button type="button" class="btn btn-primary adicionar">Cadastrar item</button>-->
+                        <button type="button" id="botao-enviar" class="btn btn-primary">Cadastrar item</button>
+                    </div>
+                </form>
+                <div id="tabela" class="mt-4">
+                    <hr>
+                    <h2 class="mb-4">Meus produtos</h2>
+                    <div class="container">
+                        <div class="table-responsive mb-3" style="border-style: groove; border-width: 1px;">
+                             <table class="table table-sm">
+                                <colgroup>
+                                   <col width="25%">
+                                   <col width="15%">
+                                   <col width="30%">
+                                   <col width="15%">
+                                   <col width="15%">
+                                </colgroup>
+                                <thead>
+                                   <tr>
+                                      <th class="text-center">Categoria</th>
+                                      <th class="text-center">Nome</th>
+                                      <th class="text-center">Quantidade</th>
+                                      <th class="text-center">Preço</th>
+                                      <th class="text-center">Remover</th>
+                                   </tr>
+                                </thead>
+                                 <tbody id="itens-tabela">
+                                 {% for produto, form in produtos %}
+                                      <tr>
+                                          <td class="text-center align-middle">
+                                             {{ produto.categoria }}
+                                         </td>
+                                         <td class="text-center align-middle">
+                                             {{ produto.nome }}
+                                         </td>
+                                          <td class="text-center align-middle">
+                                            <form class="mx-auto" style="width: 60px;"
+                                                  action ="{% url 'atualiza' %}"
+                                                  method ="post" novalidate>
+                                               {% csrf_token %}
+                                               {{ form.produto_id }}
+                                               {{ form.quantidade }}
+                                            </form>
+                                         </td>
+                                         <td class="text-right pr-5 align-middle preco">
+                                            R$ {{ produto.preco | floatformat:2 | intcomma }}
+                                         </td>
+                                         <td class="text-center align-middle">
+                                            <form style="margin-bottom: 0px;"
+                                                  action ="{% url 'deleta' %}"
+                                                  method ="post" novalidate>
+                                               {% csrf_token %}
+                                               {{ form.produto_id }}
+                                               <button style="margin-top: 0px; margin-bottom: 0px; padding-top: 3px; padding-bottom: 3px; width: 80px"
+                                                       type="button" class="btn btn-sm btn-danger remover" tabindex="-1">
+                                                   <b>Deletar</b>
+                                               </button>
+                                            </form>
+                                         </td>
+                                      </tr>
+                                     {% endfor %}
+                                </tbody>
+                                  <tfoot>
+                                   <tr id="checkout", style="background-color: #f1f1f1;">
+                                      <td colspan="3">
+                                         <strong style="margin-left: 10px">Total do carrinho ...</strong>
+                                      </td>
+                                      <td class="text-right pr-5">
+                                         <strong id="total">R$ {{ total | floatformat:2 | intcomma }}</strong>
+                                      </td>
+                                      <td></td>
+                                   </tr>
+                                  </tfoot>
+                             </table>
+                          </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+       <div class="col-2"></div>
+   </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+
+
+{% block domready %}
+
+
+    $("#botao-enviar").click(function() {
+      let validacao = validaCadastro()
+
+      if (validacao) {
+        $.ajax({
+            type:'POST',
+            url: {% url 'cria' %},
+            data:{
+                nome:$('#nome-form').val(),
+                categoria:$('#categoria-form').val(),
+                preco: parseFloat($('#preco-form').val().replace(",",".")),
+                quantidade: parseFloat($('#quantidade-form').val().replace(",",".")),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                action: 'post'
+            },
+            success: function (resposta) {
+                $("#nome-form").removeClass("is-valid");
+                 $("#preco-form").removeClass("is-valid");
+                 $("#quantidade-form").removeClass("is-valid");
+                 document.getElementById("form-cadastro").reset();
+
+
+                 let id = $(resposta).find("#id").text()
+                 let nome = $(resposta).find("#nome").text()
+                 let quantidade = $(resposta).find("#quantidade").text()
+                 let preco = $(resposta).find("#preco").text()
+                 let categoria = $(resposta).find("#categoria").text()
+
+
+                 let form_quantidade = $(resposta).find("#form-quantidade").html();
+                 let form_id = $(resposta).find("#form-id").html();
+
+                 var html  =       '<tr>' +
+                                          '<td class="text-center align-middle">' +
+                                              categoria +
+                                         '</td>' +
+                                         '<td class="text-center align-middle">'+
+                                            nome+
+                                        ' </td>'+
+                                          '<td class="text-center align-middle">'+
+                                            '<form class="mx-auto" style="width: 60px;" action ="{% url 'atualiza' %}" method ="post" novalidate>' +
+                                              '<input type="hidden" name="csrfmiddlewaretoken" value={{ csrf_token }}>' +
+                                               form_id +
+                                               form_quantidade +
+                                            '</form>' +
+                                         '</td>' +
+                                         '<td class="text-right pr-5 align-middle preco">'+
+                                           'R$ ' +  preco  +
+                                        ' </td>'+
+                                         '<td class="text-center align-middle">'+
+                                            '<form style="margin-bottom: 0px;" action ="{% url 'deleta' %}" method ="post" novalidate>'+
+                                               '<input type="hidden" name="csrfmiddlewaretoken" value={{ csrf_token }}>' +
+                                               form_id +
+                                              ' <button style="margin-top: 0px; margin-bottom: 0px; padding-top: 3px; padding-bottom: 3px; width: 80px" type="button" class="btn btn-sm btn-danger remover" tabindex="-1">'+
+                                                   '<b>Deletar</b>'+
+                                               '</button>'+
+                                           ' </form>'+
+                                         '</td>'+
+                                      '</tr>';
+
+                $(html).hide().appendTo("#itens-tabela").fadeIn(1000);
+
+                $("input.quantidade").addClass("form-control-sm")
+                        .removeClass("btn-secondary")
+                        .removeAttr("readonly")
+                        .css("background-color", "")
+
+
+                 let total = $(resposta).find("#total").text()
+
+                 $("#total").text("R$ " + total)
+            }
+        });
+      }
+   })
+
+
+
+    function validaCadastro() {
+       let resposta = true;
+
+       let campo = $("#nome-form");
+       let bool = campo.val() != '';
+       setValidation(campo, bool);
+       if(!bool) resposta = false;
+
+
+       campo = $("#quantidade-form");
+       let numero =  parseFloat(campo.val().replace(",","."))
+       bool = campo.val() != '' && numero < 100 && numero > 0 && numero%1 == 0;
+       setValidation(campo, bool);
+       if(!bool) resposta = false;
+
+       campo = $("#preco-form");
+        let aux = campo.val().replace(",",".");
+       numero =  parseFloat(aux);
+       bool = campo.val() != '' && numero < 100 && numero > 0 && ((!aux.includes(".")) || aux.length - aux.indexOf(".") < 4);
+       setValidation(campo, bool);
+       if(!bool) resposta = false;
+
+
+       campo = $("#categoria-form")
+       if(campo.val() === '') {
+          campo.css("border-color", "red");
+          resposta = false;
+       }
+       else {
+          campo.css("border-color", "green");
+       }
+
+
+
+       return resposta;
+    }
+
+
+   function setValidation(item, bool){
+      if(bool){
+         item.removeClass("is-invalid");
+         item.addClass("is-valid");
+         return
+      }
+      item.addClass("is-invalid");
+      item.removeClass("is-valid");
+      resposta = false;
+   }
+
+
+   $("input.quantidade").addClass("form-control-sm")
+                        .removeClass("btn-secondary")
+                        .removeAttr("readonly")
+                        .css("background-color", "")
+
+   $("#tabela").on("blur", "input.quantidade", function() {
+      let valor = $(this).val()
+      if (valor < 1 || valor > 99) {
+         $(this).focus()
+         return
+      }
+
+      let form = $(this).parent()
+      let tr = form.parent().parent()
+      let url = form.attr("action")
+      let formData = form.serializeArray()
+      $.post(url, formData, function(resposta) {
+
+         let total = $(resposta).find("#total").text()
+         $("#total").text("R$ " + total)
+      })
+   })
+
+
+
+    $("#tabela").on("click", ".remover", function() {
+      let form = $(this).parent()
+      form.append('<input type="hidden" name="quantidade" value="0">')
+      let tr = $(form).parent().parent()
+      let url = $(form).attr('action')
+      let formData = $(form).serializeArray()
+      $.post(url, formData, function(resposta) {
+         $(tr).fadeTo('slow', 0.3, function() {
+            $(this).remove()
+
+            let total = $(resposta).find("#total").text()
+
+            $("#total").text("R$ " + total)
+
+          })
+       })
+    })
+
+
+{% endblock %}

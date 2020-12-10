@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="assets/css/all.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <title>Bootstrap</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light custom-header navbar-expand-md" style="margin-bottom: 50px;">
+        <div class="container">
+           <a href="index.html" class="navbar-brand col-8"><img src="assets/images/logo.png" id="logo"
+                 alt="Logo do Pizza Mario"></a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"
+              aria-expanded="false" aria-label="Botão de navegação">
+              <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse col-4" id="menu">
+              <div class="navbar-nav mr-auto">
+                 <a class="nav-item nav-link" href="cardápio.html">Cardápio</a>
+                 <a class="nav-item nav-link" href="carrinho.html">Carrinho</a>
+                 <a class="nav-item nav-link" href="profile.html">Login</a>
+              </div>
+           </div>
+     </nav>
+  
+    <div class="container login-form">
+        <div class="custom-form-header">
+            <div class="text-center">
+                <h2 style="color: white; padding-top: 10px;">Login</h2><br>
+            </div>
+        </div>
+        <form>
+            <div class="container form-group">
+                <label for="email" class="title-login">
+                    <h3>Email</h3>
+                </label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Digite seu email">
+            </div>
+            <div class="container form-group">
+                <label for="senha" class="title-login">
+                    <h3>Senha</h3>
+                </label>
+                <input type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+            </div>
+            <button type="submit" class="btn-custom">Entrar</button>
+        </form>
+        <div class="custom-form-bottom">
+            <div class="text-center">
+                <span>Ainda não possui cadastro?<a href="#"  data-toggle="modal" data-target="#modalRegister">clique aqui</a></span>
+
+                <div class="modal fade" style="color: black;" id="modalRegister">
+                    <div class="modal-dialog modal-lg">
+                       <div class="modal-content">
+                          <div class="modal-header">
+                             <span class="modal-title">Cadastro</span>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                                <span aria-hidden="true">&times;</span>
+                             </button>
+                          </div>
+                          <div class="modal-body"  style="padding-top: 40px;">
+                             <form action="">
+                                <fieldset class="form-group">
+                                    <legend class="font-weight-bold" style="margin-bottom: 40px;">Informações de login</legend>
+                                    <div class="form-group row">
+                                        <label for="Email" class="col-form-label col-lg-12">Email</label>
+                                        <div class="col-lg-10" style="margin-left: 8.33%; ; margin-right: 8.33%;">
+                                           <input type="email" name="Email"
+                                                  class="form-control" 
+                                                  placeholder="email@email.com" id="Email" >
+                                                  <div class="invalid-feedback">
+                                                      Este campo deve ser informado.
+                                                   </div>                                                 
+                                        </div>
+                                     </div>
+                                     <div class="form-group row">
+                                        <label for="Senha" class="col-form-label col-lg-12">Senha</label>
+                                        <div class="col-lg-10" style="margin-left: 8.33%; margin-right: 8.33%;">
+                                           <input type="password" name="Senha"
+                                                  class="form-control" 
+                                                  placeholder="" id="Senha" >
+                                                  <div class="invalid-feedback">
+                                                      Este campo deve ser informado.
+                                                   </div>                                                 
+                                        </div>
+                                     </div>
+                                    <legend class="font-weight-bold" style=" margin-top: 60px; margin-bottom: 40px;">Informações para entregas</legend>
+                                   <div class="form-group row">
+                                      <label for="nome" class="col-form-label col-lg-2">Nome</label>
+                                      <div class="col-lg-10">
+                                         <input type="text" name="nome"
+                                                class="form-control" 
+                                                placeholder="Nome" id="nome" >
+                                                <div class="invalid-feedback">
+                                                    Este campo deve ser informado.
+                                                 </div>                                                 
+                                      </div>
+                                   </div>
+                                   <div class="form-group row">
+                                      <label for="CEP" class="col-form-label col-lg-2">CEP</label>
+                                      <div class="col-lg-4">
+                                         <input type="text" id="CEP" name="CEP"
+                                                class="form-control" placeholder="12345-678">
+                                         <div class="invalid-feedback">
+                                            Este campo deve ser informado.
+                                         </div>       
+                                      </div>
+                                      <label for="Telefone" class="col-form-label col-lg-2">Telefone</label>
+                                      <div class="col-lg-4">
+                                         <input type="number" id="Telefone" name="Telefone"
+                                                class="form-control" placeholder="(21) 98765-4321">
+                                         <div class="invalid-feedback">
+                                            Este campo deve ser informado.
+                                         </div>       
+                                      </div>
+                                   </div>
+                                   <div class="form-group row">
+                                    <label for="Numero" class="col-form-label col-lg-2">Numero</label>
+                                    <div class="col-lg-2">
+                                       <input type="text" id="CEP" name="Numero"
+                                              class="form-control" placeholder="21">
+                                       <div class="invalid-feedback">
+                                          Este campo deve ser informado.
+                                       </div>       
+                                    </div>
+                                    <label for="Telefone" class="col-form-label col-lg-2">Complemento</label>
+                                    <div class="col-lg-6">
+                                       <input type="text" id="Complemento" name="Complemento"
+                                              class="form-control" placeholder="casa 22">
+                                       <div class="invalid-feedback">
+                                          Este campo deve ser informado.
+                                       </div>       
+                                    </div>
+                                 </div>
+                                </fieldset>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Enviar</button>
+                                  </div>
+                             </form>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container" style="padding-top: 20px;">
+            <div class="row">
+                <div class="col-8 mb-4">
+                    <h5><i class="fas fa-phone"></i> Nossos telefones</h5>
+                    <ul class="list-unstyled">
+                        <li style="margin-left: 20px;">(21) 2323-7899</li>
+                        <li style="margin-left: 20px;">(21) 2424-7899</li>
+                        <li style="margin-left: 20px;">(21) 97871-1990</li>
+                    </ul>
+                </div>
+
+                <div class="col-5 col-md-4">
+                    <h5>Horários de funcionamento</h5>
+                    <ul class="list-unstyled">
+                        <li>SEG.– SEX. 17:30 – 23:50</a></li>
+                        <li>SÁB. – DOM. 17:30 – 23:50</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery-3.3.1.js"></script>
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link href="assets/css/all.css" rel="stylesheet">
+   <link href="assets/css/bootstrap.css" rel="stylesheet">
+   <link href="assets/css/main.css" rel="stylesheet">
+
+   <title>Bootstrap</title>
+</head>
+
+<body>
+   <nav class="navbar navbar-light custom-header navbar-expand-md" style="margin-bottom: 100px;">
+      <div class="container">
+         <a href="index.html" class="navbar-brand col-8"><img src="assets/images/logo.png" id="logo"
+               alt="Logo do Pizza Mario"></a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"
+            aria-expanded="false" aria-label="Botão de navegação">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse col-4" id="menu">
+            <div class="navbar-nav mr-auto">
+               <a class="nav-item nav-link" href="cardápio.html">Cardápio</a>
+               <a class="nav-item nav-link" href="carrinho.html">Carrinho</a>
+               <a class="nav-item nav-link" href="profile.html">Login</a>
+            </div>
+         </div>
+   </nav>
+
+   <div class="container login-form">
+      <div class="custom-form-header">
+         <div class="text-center">
+            <h2 style="color: white; padding-top: 10px;">Login</h2><br>
+         </div>
+      </div>
+      <form>
+         <div class="container form-group">
+            <label for="email" class="title-login">
+               <h3>Email</h3>
+            </label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+               placeholder="Digite seu email">
+         </div>
+         <div class="container form-group">
+            <label for="senha" class="title-login">
+               <h3>Senha</h3>
+            </label>
+            <input type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+         </div>
+         <button type="submit" class="btn-custom">Entrar</button>
+      </form>
+      <div class="custom-form-bottom">
+         <div class="text-center">
+            <span>Ainda não possui cadastro?<a href="#" data-toggle="modal" data-target="#modalRegister">clique
+                  aqui</a></span>
+
+            <div class="modal fade" style="color: black;" id="modalRegister">
+               <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <span class="modal-title">Cadastro</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <div class="modal-body" style="padding-top: 40px;">
+                        <form action="">
+                           <fieldset class="form-group">
+                              <legend class="font-weight-bold" style="margin-bottom: 40px;">Informações de login
+                              </legend>
+                              <div class="form-group row">
+                                 <label for="Email" class="col-form-label col-lg-12">Email</label>
+                                 <div class="col-lg-10" style="margin-left: 8.33%; ; margin-right: 8.33%;">
+                                    <input type="email" name="Email" class="form-control" placeholder="email@email.com"
+                                       id="Email">
+                                    <div class="invalid-feedback">
+                                       Este campo deve ser informado.
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="form-group row">
+                                 <label for="Senha" class="col-form-label col-lg-12">Senha</label>
+                                 <div class="col-lg-10" style="margin-left: 8.33%; margin-right: 8.33%;">
+                                    <input type="password" name="Senha" class="form-control" placeholder="" id="Senha">
+                                    <div class="invalid-feedback">
+                                       Sua senha precisa ter ao menos 8 caracteres.
+                                    </div>
+                                 </div>
+                              </div>
+                              <legend class="font-weight-bold" style=" margin-top: 60px; margin-bottom: 40px;">
+                                 Informações adicionais</legend>
+                              <div class="form-group row">
+                                 <div class="col-lg-4">
+                                    <label for="intolerancia">Possui intolerância à lactose?</label>
+                                    <div class="form-check" style="margin-top: 20px">
+                                       <input class="form-check-input" type="radio" name="intolerancia" value="S">
+                                       <label class="form-check-label" for="form-check-label">
+                                         Sim
+                                       </label>
+                                     </div>
+                                     <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="intolerancia" value="N">
+                                       <label class="form-check-label" for="form-check-label">
+                                         Não
+                                       </label>
+                                     </div>
+                                     <div id="intolerancia-feedback" class="invalid-feedback">
+                                       Selecione uma opção
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-4">
+                                    <label for="intolerancia" style="margin-bottom: 20px;">Quais sabores que te interessam?</label>
+                                    <div class="form-check">
+                                       <input id="salgados" type="checkbox" name="salgados" class="form-check-input sabores">
+                                       <label for="salgados" class="form-check-label ">
+                                          Salgados
+                                       </label>
+                                    </div>
+                                    <div class="form-check">
+                                       <input id="doces" type="checkbox" name="doces" class="form-check-input sabores">
+                                       <label for="doces" class="form-check-label ">
+                                          Doces
+                                       </label>
+                                    </div>
+                                    <div class="form-check">
+                                       <input id="veganos" type="checkbox" name="veganos" class="form-check-input sabores">
+                                       <label for="veganos" class="form-check-label ">
+                                          Veganos
+                                       </label>
+                                    </div>
+                                    <div id="sabores-feedback" class="invalid-feedback">
+                                       Selecione ao menos um sabor.
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-4 ">
+                                    <div class="form-check">
+                                       <label for="unidade_prox" class="col-12" style="margin-bottom: 20px">Selecione a unidade mais próxima</label>
+                                       <div class="col-lg-10">
+                                          <select class="form-control" id="Unidade">
+                                             <option selected value="">--- Selecione uma unidade ---</option>
+                                             <option value="1">Copacabana</option>
+                                             <option value="2">Tijuca</option>
+                                             <option value="3">Botafogo</option>
+                                             <option value="4">Centro</option>
+                                             <option value="5">Recreio</option>
+                                             <option value="6">Taquara</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <legend class="font-weight-bold" style=" margin-top: 60px; margin-bottom: 40px;">
+                                 Informações para entregas</legend>
+                              <div class="form-group row">
+                                 <label for="nome" class="col-form-label col-lg-2">Nome</label>
+                                 <div class="col-lg-10">
+                                    <input type="text" name="Nome" class="form-control" placeholder="Nome" id="Nome">
+                                    <div class="invalid-feedback">
+                                       Este campo deve ser informado.
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="form-group row">
+                                 <label for="CEP" class="col-form-label col-lg-2">CEP</label>
+                                 <div class="col-lg-4">
+                                    <input type="text" id="Cep" name="CEP" class="form-control" placeholder="12345-678" maxlength="9">
+                                    <div class="invalid-feedback">
+                                       O cpf deve conter 8 digitos.
+                                    </div>
+                                 </div>
+                                 <label for="Telefone" class="col-form-label col-lg-2">Telefone</label>
+                                 <div class="col-lg-4">
+                                    <input type="number" id="Telefone" name="Telefone" class="form-control"
+                                       placeholder="21 98765-4321" maxlength="15">
+                                    <div class="invalid-feedback">
+                                       Este campo deve ser informado.
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="form-group row">
+                                 <label for="Numero" class="col-form-label col-lg-2">Numero</label>
+                                 <div class="col-lg-2">
+                                    <input type="text" id="Numero" name="Numero" class="form-control" placeholder="21" maxlength="6">
+                                    <div class="invalid-feedback">
+                                       Este campo deve ser informado.
+                                    </div>
+                                 </div>
+                                 <label for="Telefone" class="col-form-label col-lg-2">Complemento</label>
+                                 <div class="col-lg-6">
+                                    <input type="text" id="Complemento" name="Complemento" class="form-control"
+                                       placeholder="casa 22">
+                                    <div class="invalid-feedback">
+                                       Este campo deve ser informado.
+                                    </div>
+                                 </div>
+                              </div>
+
+                           </fieldset>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                              <button type="button" class="btn btn-primary" id="botao-enviar" >Enviar</button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div style="height: 100px;">
+   </div>
+
+   <div class="footer">
+      <div class="container" style="padding-top: 20px;">
+         <div class="row">
+            <div class="col-8 mb-4">
+               <h5><i class="fas fa-phone"></i> Nossos telefones</h5>
+               <ul class="list-unstyled">
+                  <li style="margin-left: 20px;">(21) 2323-7899</li>
+                  <li style="margin-left: 20px;">(21) 2424-7899</li>
+                  <li style="margin-left: 20px;">(21) 97871-1990</li>
+               </ul>
+            </div>
+
+            <div class="col-5 col-md-4">
+               <h5>Horários de funcionamento</h5>
+               <ul class="list-unstyled">
+                  <li>SEG.– SEX. 17:30 – 23:50</a></li>
+                  <li>SÁB. – DOM. 17:30 – 23:50</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+   <script src="assets/js/jquery-3.3.1.js"></script>
+   <script src="assets/js/popper.js"></script>
+   <script src="assets/js/bootstrap.js"></script>
+   <script src="assets/js/script.js"></script>
+</body>
+
+
+
+</html>

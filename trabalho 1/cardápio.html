@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="assets/css/all.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <title>Bootstrap</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light custom-header navbar-expand-md" style="margin-bottom: 50px;">
+        <div class="container">
+            <a href="index.html" class="navbar-brand col-8"><img src="assets/images/logo.png" id="logo"
+                    alt="Logo do Pizza Mario"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"
+                aria-expanded="false" aria-label="Botão de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse col-4" id="menu">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="cardápio.html">Cardápio</a>
+                    <a class="nav-item nav-link" href="carrinho.html">Carrinho</a>
+                    <a class="nav-item nav-link" href="profile.html">Login</a>
+                </div>
+            </div>
+    </nav>
+
+    <div class="container-fluid" id="cardapio-container">
+
+        <h2 id="cardapio-title">Cardápio</h2>
+
+        <div class="row">
+            <div class="col-12 mb-3 cardapio-subtitle">
+                <h4>Salgadas</h4>
+            </div>
+            <div class="sabor-container mb-5">
+                <div class="row">
+                    <div class="col-lg-6 mb-5">
+                        <div class="media">
+                            <img src="assets/images/mussarela.jpg" alt="Mussarela">
+                            <div class="media-body">
+                                <h5>Mussarela - R$30,99 <span class="badge badge-secondary">Novidade</span></h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sint delectus
+                                    accusantium, numquam illum quidem recusandae voluptatum minima perspiciatis sapiente
+                                    modi ad commodi quos, doloremque, vel sequi facilis fuga iste.</p>
+                                <button class="btn btn-add-carrinho" type="submit"><i class="fas fa-shopping-cart"></i>
+                                    Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-5">
+                        <div class="media">
+                            <img src="assets/images/mussarela.jpg" alt="Mussarela">
+                            <div class="media-body">
+                                <h5>Mussarela - R$30,99</h5>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet architecto
+                                    incidunt, ipsum enim facilis perferendis perspiciatis sit dignissimos minima quia
+                                    nisi. Totam dignissimos quidem delectus aperiam velit, hic quod tempore.</p>
+                                <button class="btn btn-add-carrinho" type="submit"><i class="fas fa-shopping-cart"></i>
+                                    Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-5">
+                        <div class="media">
+                            <img src="assets/images/mussarela.jpg" alt="Mussarela">
+                            <div class="media-body">
+                                <h5>Mussarela - R$30,99</h5>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam, dolore.
+                                    Architecto, soluta tempora rerum totam, eveniet sunt sit accusamus quod numquam
+                                    animi aut ipsa quas hic, repudiandae optio veritatis illo.</p>
+                                <button class="btn btn-add-carrinho" type="submit"><i class="fas fa-shopping-cart"></i>
+                                    Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-5">
+                        <div class="media">
+                            <img src="assets/images/mussarela.jpg" alt="Mussarela">
+                            <div class="media-body">
+                                <h5>Mussarela - R$30,99</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, incidunt
+                                    ratione veniam impedit neque explicabo id assumenda sint velit quaerat expedita ab
+                                    asperiores quisquam maxime harum nihil ipsum odit animi.</p>
+                                <button class="btn btn-add-carrinho" type="submit"><i class="fas fa-shopping-cart"></i>
+                                    Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="Paginas de pizzas" class="paginacao-pizzas d-none d-md-block">
+                <ul class="pagination pagination-lg">
+                    <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+                    <li class="page-item active" aria-current="Pagina">
+                        <span class="page-link">
+                            1
+                            <span class="sr-only">(current)</span>
+                        </span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+                </ul>
+            </nav>
+
+            <nav aria-label="Paginas de pizzas" class="paginacao-pizzas d-sm-block d-md-none">
+                <ul class="pagination pagination-md">
+                    <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+                    <li class="page-item active" aria-current="Pagina">
+                        <span class="page-link">
+                            1
+                            <span class="sr-only">(current)</span>
+                        </span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+                </ul>
+            </nav>
+            <div class="col-12 mb-3 cardapio-subtitle">
+                <h4>Doces</h4>
+            </div>
+            <div class="sabor-container mb-5">
+                <div class="row">
+                    <div class="col-lg-6 mb-5">
+                        <div class="media">
+                            <img src="assets/images/doce.jpg" alt="Doce">
+                            <div class="media-body">
+                                <h5>Chocolate - R$30,99 <span class="badge badge-secondary">Novidade</span></h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sint delectus
+                                    accusantium, numquam illum quidem recusandae voluptatum minima perspiciatis sapiente
+                                    modi ad commodi quos, doloremque, vel sequi facilis fuga iste.</p>
+                                <button class="btn btn-add-carrinho" type="submit"><i class="fas fa-shopping-cart"></i>
+                                    Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-5">
+                        <div class="media">
+                            <img src="assets/images/doce.jpg" alt="Doce">
+                            <div class="media-body">
+                                <h5>Chocolate - R$30,99 <span class="badge badge-secondary">Novidade</span></h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sint delectus
+                                    accusantium, numquam illum quidem recusandae voluptatum minima perspiciatis sapiente
+                                    modi ad commodi quos, doloremque, vel sequi facilis fuga iste.</p>
+                                <button class="btn btn-add-carrinho" type="submit"><i class="fas fa-shopping-cart"></i>
+                                    Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-5">
+                        <div class="media">
+                            <img src="assets/images/doce.jpg" alt="Doce">
+                            <div class="media-body">
+                                <h5>Chocolate - R$30,99 <span class="badge badge-secondary">Novidade</span></h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sint delectus
+                                    accusantium, numquam illum quidem recusandae voluptatum minima perspiciatis sapiente
+                                    modi ad commodi quos, doloremque, vel sequi facilis fuga iste.</p>
+                                <button class="btn btn-add-carrinho" type="submit"><i class="fas fa-shopping-cart"></i>
+                                    Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mb-3 cardapio-subtitle">
+                <h4>Outros</h4>
+            </div>
+            <div class="sabor-container mb-5">
+                <div class="row">
+                    <div class="col-lg-6 mb-5">
+                        <div class="media">
+                            <img src="assets/images/ketchup.jpg" alt="ketchup">
+                            <div class="media-body">
+                                <h5>Ketchup Hellmann's - R$10,99</h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sint delectus
+                                    accusantium, numquam illum quidem recusandae voluptatum minima perspiciatis sapiente
+                                    modi ad commodi quos, doloremque, vel sequi facilis fuga iste.</p>
+                                <button class="btn btn-add-carrinho" type="submit"><i class="fas fa-shopping-cart"></i>
+                                    Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-5">
+                        <div class="media">
+                            <img src="assets/images/coca.png" alt="Coca cola">
+                            <div class="media-body">
+                                <h5>Coca cola 2 litros - R$10,99 <span class="badge badge-secondary">Novidade</span>
+                                </h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sint delectus
+                                    accusantium, numquam illum quidem recusandae voluptatum minima perspiciatis sapiente
+                                    modi ad commodi quos, doloremque, vel sequi facilis fuga iste.</p>
+                                <button class="btn btn-add-carrinho" type="submit"><i class="fas fa-shopping-cart"></i>
+                                    Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer">
+        <div class="container" style="padding-top: 20px;">
+            <div class="row">
+                <div class="col-8 mb-4">
+                    <h5><i class="fas fa-phone"></i> Nossos telefones</h5>
+                    <ul class="list-unstyled">
+                        <li style="margin-left: 20px;">(21) 2323-7899</li>
+                        <li style="margin-left: 20px;">(21) 2424-7899</li>
+                        <li style="margin-left: 20px;">(21) 97871-1990</li>
+                    </ul>
+                </div>
+
+                <div class="col-5 col-md-4">
+                    <h5>Horários de funcionamento</h5>
+                    <ul class="list-unstyled">
+                        <li>SEG.– SEX. 17:30 – 23:50</a></li>
+                        <li>SÁB. – DOM. 17:30 – 23:50</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery-3.3.1.js"></script>
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}
+   Cadastro de novos produtos
+{% endblock %}
+
+{% block corpo %}
+<div class="container-fluid" id="cardapio-container">
+    <h2 id="cardapio-title">Cadastro de produtos</h2>
+       <form action="{% url 'produto:cadastrar_produtos' %}" method="POST" enctype="multipart/form-data" class="pb-4" novalidate>
+           <div class="row mb-5" style="margin-top: 1px solid black;">
+               <div class="row col-lg-6">
+                   <div class="mb-3 col-lg-12">
+                       <h5 class="pt-4">Nome:</h5>
+                       <label class="col-xl-2 font-weight-bold"></label>
+                       <div class="col-xl-11">
+                           {{ form.nome }}
+                           {% if form.nome.errors %}
+                           <div class="alert alert-danger mb-0" role="alert" style="padding-top: 2px; padding-bottom: 2px">
+                               {% for error in form.nome.errors %}
+                               <small>{{ error }}</small>
+                               {% endfor %}
+                           </div>
+                           {% endif %}
+                       </div>
+                   </div>
+                   <div class="mb-3 col-lg-6">
+                       <h5 class="pt-4">Categoria:</h5>
+                    <label class="col-xl-2 font-weight-bold"></label>
+                       <div class="col-xl-10">
+                          {{ form.categoria }}
+                          {% if form.categoria.errors %}
+                             <div class="alert alert-danger mb-0" role="alert" style="padding-top: 2px; padding-bottom: 2px">
+                                {% for error in form.categoria.errors %}
+                                   <small>{{ error }}</small>
+                                {% endfor %}
+                             </div>
+                          {% endif %}
+                       </div>
+                </div>
+                <div class="mb-3 col-lg-6">
+                                    <h5 class="pt-4">Preço:</h5>
+                    <label class="col-xl-2 font-weight-bold"></label>
+                    <div class="col-xl-10">
+                        {{ form.preco }}
+                        {% if form.preco.errors %}
+                        <div class="alert alert-danger mb-0" role="alert" style="padding-top: 2px; padding-bottom: 2px">
+                            {% for error in form.preco.errors %}
+                            <small>{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 col-lg-6">
+                <h5 class="pt-4">Descrição:</h5>
+                <label class="col-xl-3 font-weight-bold"></label>
+                <div class="col-xl-9">
+                    {{ form.descricao }}
+                    {% if form.descricao.errors %}
+                    <div class="alert alert-danger mb-0" role="alert" style="padding-top: 2px; padding-bottom: 2px">
+                        {% for error in form.descricao.errors %}
+                        <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+           <div class="row mb-5" style="margin-top: 1px solid black;">
+                <div class="mb-3 col-lg-6">
+                    <h5 class="pt-4">Disponibilidade:</h5>
+                    <div class="form-check pl-0 mt-xl-3 mt-3">
+                        {{ form.disponivel }}
+                        {# <input type="checkbox" name="disponivel" id="id_disponivel"> #}
+                        <label class="form-check-label">Disponível?</label>
+                    </div>
+                </div>
+               <div class="mb-3 col-lg-6">
+                   <h5 class="pt-4">Imagem:</h5>
+                   <label class="col-xl-2 font-weight-bold"></label>
+                   <div class="col-xl-6">
+                       {{ form.imagem }}
+                       {% if form.imagem.errors %}
+                       <div class="alert alert-danger mb-0" role="alert" style="padding-top: 2px; padding-bottom: 2px">
+                           {% for error in form.imagem.errors %}
+                           <small>{{ error }}</small>
+                           {% endfor %}
+                       </div>
+                       {% endif %}
+                   </div>
+               </div>
+           </div>
+           <div class="modal-footer">
+               {% csrf_token%}
+               {% if 'produto_id' in request.session %}
+                    <button form="RemoveProduto" type="submit" class="btn btn-danger">
+                        <span>Remover</span>
+                    </button>
+                    <button type="submit" class="btn btn-primary">Alterar item</button>
+               {% else %}
+
+                    <button type="submit" class="btn btn-primary">Cadastrar item</button>
+               {% endif %}
+           </div>
+
+    </form>
+    {% if 'produto_id' in request.session %}
+        <form id="RemoveProduto" action="{% url 'produto:remove_produto' id %}" method="POST">{% csrf_token %}</form>
+    {% endif %}
+</div>
+{% endblock %}

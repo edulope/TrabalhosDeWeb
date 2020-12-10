@@ -1,0 +1,260 @@
+.custom-header {
+    background-color: #00a035;
+}
+
+#logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+nav .navbar-nav a {
+    color: white !important;
+    font-size: 1.3em;
+    margin-left: 50px;
+}
+
+.footer {
+    background-color: #5d0b06;
+    color: #efefef;
+    padding: 30px 0;
+}
+
+.login-form {
+    margin-top: 50px;
+    width: 500px;
+    padding: 0;
+    margin-bottom: 100px;
+    border: 1px solid black!important;
+    border-radius: 16px;
+}
+
+@media(max-width: 576px) {
+    .login-form {
+        margin-top: 50px;
+        padding: 0;
+        width: 100%;
+        margin-bottom: 100px;
+        border: 1px solid black!important;
+        border-radius: 16px;
+    }
+}
+
+.custom-form-header {
+    height: 70px;
+    width: 100%;
+    padding: 0;
+    background-color: #b40000;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.title-login {
+    margin-top: 30px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-custom {
+    margin-bottom: 30px;
+    margin-top: 50px;
+    margin-left: 20%;
+    height: 40px;
+    width: 60%;
+    background-color: #b40000;
+    border-radius: 7px;
+    color: white;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+}
+
+.btn-custom:hover {
+    background-color: #f51414;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.custom-form-bottom {
+    height: 50px;
+    width: 100%;
+    padding: 10px;
+    background-color: #9e9d9d;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.custom-form-bottom .text-center {
+    font-size: large;
+    color: white;
+}
+
+#mario-container {
+    width: 100%;
+    background-color: #fa5151;
+    color: white;
+    border-radius: 16px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    margin-left: 16.66%;
+}
+
+
+
+#pizza-mario {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0;
+    border-radius: 16px;
+}
+
+#pizza-mario img {
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+@media(max-width: 960px) {
+    #mario-container {
+        margin-left: 0;
+        border-radius: 0;
+    }
+    #pizza-mario {
+        width: 100%;
+        border-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+    #pizza-mario img{
+        border-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+}
+
+
+#pizza-luigi {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    padding: 0;
+    border-radius: 16px;
+    margin-left: 16.66%;
+}
+
+#luigi-container {
+    background-color: #43e767;
+    color: white;
+    border-radius: 16px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+
+@media(max-width: 960px) {
+    #luigi-container{
+        margin-left: 0;
+        border-radius: 0;
+    }
+    #pizza-luigi2 {
+        width: 100%;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        padding: 0;
+        border-radius: 0px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    nav .navbar-nav a {
+        margin-left: 4.5px;
+    }
+}
+
+.media img {
+    width: 180px;
+    margin-bottom: 16px;
+    margin-right: 16px;
+    border-radius: 6%;
+}
+
+#cardapio-container {
+    margin-top: 120px;
+    margin-bottom: 70px;
+    width: 99%;
+    border: 1px solid black!important;
+    border-radius: 16px;
+}
+
+#carrinho-container {
+    margin-top: 120px;
+    margin-bottom: 70px;
+    width: 80%;
+    border: 1px solid black!important;
+    border-radius: 16px;
+}
+
+#cardapio-title {
+    margin-top: -70px;
+    margin-left: 80ox;
+    margin-bottom: 40px;
+}
+
+.btn-add-carrinho {
+    margin-top: 10px;
+    margin-left: 20%;
+    height: 40px;
+    width: 40%;
+    background-color: #b40000;
+    border-radius: 7px;
+    color: white;
+}
+
+.btn-add-carrinho:hover {
+    color: white;
+}
+
+@media (max-width: 1450px) {
+    .btn-add-carrinho {
+        width: 80%;
+    }
+}
+
+.cardapio-subtitle {
+    text-align: center;
+}
+
+.sabor-container {
+    border-top: 1px solid #b40000;
+    padding-top: 50px;
+    margin: 10px;
+}
+
+.item-carrinho {
+    width: 80%;
+    margin-left: 10%;
+    padding-left: 10%;
+    border-top: 1px solid #b40000;
+    margin-bottom: 60px;
+    padding-top: 30px;
+}
+
+@media (max-width: 700px) {
+    .item-carrinho {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+.paginacao-pizzas {
+    margin-left: 20px;
+}
+
+@media (max-width: 576px) {
+    .btn-add-carrinho {
+        margin-left: -20px;
+        width: 100%;
+        height: 60px;
+    }
+}
